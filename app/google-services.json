@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "704546514600",
+    "project_id": "biotrack-9bbc6",
+    "storage_bucket": "biotrack-9bbc6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704546514600:android:f4a88f11a846400956849d",
+        "android_client_info": {
+          "package_name": "com.santidev.biotrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704546514600-s5v2m71uccv3gam0tlf4gon2s9gph2n8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.santidev.biotrack",
+            "certificate_hash": "212d46eab931f9401e0ce4c43f2a3e036c304f20"
+          }
+        },
+        {
+          "client_id": "704546514600-fhnln1l8t21cc6i20b483ju2n5jnep3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7259ltFggX8kr7BV6gzOtkwF0Rm1411c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704546514600-fhnln1l8t21cc6i20b483ju2n5jnep3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
