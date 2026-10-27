@@ -17,7 +17,7 @@ data class ParsedStudy(val titleSuggestion: String?, val rows: List<ParsedRow>)
 
 // Parámetros frecuentes: nombre que se muestra → otras formas en que aparece (sin tildes, en minúscula)
 private val NAME_CATALOG: Map<String, List<String>> = mapOf(
-  "Leucocitos" to listOf("globulos blancos", "wbc"),
+  "Leucocitos" to listOf("globulos blancos", "wbc", "GB"),
   "Eritrocitos" to listOf("globulos rojos", "hematies", "rbc"),
   "Hemoglobina" to listOf("hb", "hgb"),
   "Hematocrito" to listOf("hto", "hct"),

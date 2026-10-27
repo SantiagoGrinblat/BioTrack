@@ -1,0 +1,35 @@
+
+{
+  "estudios": [
+    {
+      "id": "hemograma",
+      "nombre": "Hemograma",
+      "sinonimos": [
+        "hemograma completo",
+        "hemograma con formula leucocitaria",
+        "recuento sanguineo"
+      ],
+      "archivo": "estudios/hemograma.json"
+    },
+    {
+      "id": "examen_orina",
+      "nombre": "Examen de orina",
+      "sinonimos": [
+        "analisis de orina",
+        "orina completa",
+        "uroanalisis",
+        "examen general de orina"
+      ],
+      "archivo": "estudios/examen_orina.json"
+    },
+    {
+      "id": "hepatograma",
+      "nombre": "Hepatograma",
+      "sinonimos": [
+        "perfil hepatico",
+        "pruebas hepaticas"
+      ],
+      "archivo": "estudios/hepatograma.json"
+    }
+  ]
+}

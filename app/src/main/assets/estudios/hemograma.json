@@ -1,0 +1,102 @@
+{
+  "id": "hemograma",
+  "nombre": "Hemograma",
+  "secciones": [
+    {
+      "id": "serie_roja",
+      "nombre": "Serie Roja",
+      "sinonimos": [
+        "recuento e indices de hematocritos"
+      ],
+      "parametros": [
+        {
+          "id": "globulos_rojos",
+          "nombre": "Recuento de glóbulos rojos",
+          "sinonimos": [
+            "eritrocito",
+            "eritrocitos",
+            "hematíes",
+            "glóbulos rojos",
+            "recuento eritrocitario"
+          ],
+          "unidad": "/mm3"
+        },
+        {
+          "id": "hematocrito",
+          "nombre": "Hematocrito",
+          "sinonimos": [
+            "HCT"
+          ],
+          "unidad": "%"
+        },
+        {
+          "id": "hemoglobina",
+          "nombre": "Hemoglobina",
+          "sinonimos": [
+            "HGB",
+            "Hb"
+          ],
+          "unidad": "g/dL"
+        },
+        {
+          "id": "vcm",
+          "nombre": "Volumen corpuscular medio",
+          "sinonimos": [
+            "VCM",
+            "MCV"
+          ],
+          "unidad": "fL"
+        },
+        {
+          "id": "hcm",
+          "nombre": "Hemoglobina corpuscular media",
+          "sinonimos": [
+            "HCM",
+            "MCH",
+            "MCM"
+          ],
+          "unidad": "pg"
+        },
+        {
+          "id": "rdw",
+          "nombre": "Amplitud de distribución eritrocitaria",
+          "sinonimos": [
+            "RDW"
+          ],
+          "unidad": "%"
+        },
+        {
+          "id": "mpv",
+          "nombre": "Volumen plaquetario medio",
+          "sinonimos": [
+            "MPV",
+            "VPM"
+          ],
+          "unidad": "fL"
+        },
+        {
+          "id": "pct",
+          "nombre": "Plaquetocrito",
+          "sinonimos": [
+            "PCT"
+          ],
+          "unidad": "%"
+        },
+        {
+          "id": "pdw",
+          "nombre": "Ancho de distribución plaquetaria",
+          "sinonimos": [
+            "PDW"
+          ],
+          "unidad": null
+        }
+      ]
+    },
+    {
+      "id": "serie_blanca",
+      "nombre": "Serie Blanca",
+      "sinonimos": [],
+      "parametros": []
+    }
+  ]
+}
