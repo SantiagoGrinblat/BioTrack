@@ -7,22 +7,20 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.santidev.biotrack.data.firestore.FirestoreStudiesRepository
+import com.santidev.biotrack.data.LabRepository
 import com.santidev.biotrack.ui.composables.auth.AuthViewModel
 import com.santidev.biotrack.ui.composables.auth.LoginScreen
-import com.santidev.biotrack.ui.composables.studies.adds.AddStudyScreen
-import com.santidev.biotrack.ui.composables.studies.adds.AddStudyViewModel
-import com.santidev.biotrack.ui.composables.studies.details.StudyDetailScreen
-import com.santidev.biotrack.ui.composables.studies.details.StudyDetailViewModel
-import com.santidev.biotrack.ui.composables.studies.lists.StudyListScreen
-import com.santidev.biotrack.ui.composables.studies.lists.StudyListViewModel
-import com.santidev.biotrack.ui.composables.summary.DoctorSummaryScreen
-import com.santidev.biotrack.ui.composables.summary.DoctorSummaryViewModel
-import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import com.santidev.biotrack.ui.screens.infoScreen.NewLabScreen
+import com.santidev.biotrack.ui.screens.infoScreen.NewLabViewModel
+import com.santidev.biotrack.ui.screens.initialScreen.LabListScreen
+import com.santidev.biotrack.ui.screens.initialScreen.LabListViewModel
+import com.santidev.biotrack.ui.screens.summaryScreen.DoctorSummaryScreen
+import com.santidev.biotrack.ui.screens.summaryScreen.DoctorSummaryViewModel
 
 @Composable
 fun NavWrapper(authViewModel: AuthViewModel) {
@@ -32,7 +30,7 @@ fun NavWrapper(authViewModel: AuthViewModel) {
   if (currentUser == null) {
     LoginScreen(authViewModel)
   } else {
-    val backStack = remember { mutableStateListOf<Any>(Routes.StudyList) }
+    val backStack = remember { mutableStateListOf<Any>(Routes.LabList) }
     NavDisplay(
       backStack = backStack,
       onBack = { backStack.removeLastOrNull() },
@@ -41,51 +39,38 @@ fun NavWrapper(authViewModel: AuthViewModel) {
         rememberViewModelStoreNavEntryDecorator()
       ),
       entryProvider = entryProvider {
-        entry<Routes.StudyList> {
-          val viewModel: StudyListViewModel = viewModel(
+        entry<Routes.LabList> {
+          val viewModel: LabListViewModel = viewModel(
             key = currentUser.uid, //un ViewModel distinto por cada cuenta
             factory = viewModelFactory {
-              initializer { StudyListViewModel(FirestoreStudiesRepository()) }
+              initializer { LabListViewModel(LabRepository()) }
             }
           )
-          StudyListScreen(
+          LabListScreen(
             viewModel = viewModel,
-            onAddStudy = { backStack.add(Routes.AddStudy) },
-            onOpenStudy = { studyId -> backStack.add(Routes.StudyDetail(studyId)) },
-            onSignOut = authViewModel::signOut,
+            onNewLab = { backStack.add(Routes.NewLab) },
             onOpenSummary = { backStack.add(Routes.DoctorSummary) },
+            onSignOut = authViewModel::signOut,
           )
         }
-        entry<Routes.AddStudy> {
-          val viewModel: AddStudyViewModel = viewModel(
-            key = "add-study-${currentUser.uid}",
+        entry<Routes.NewLab> {
+          val viewModel: NewLabViewModel = viewModel(
+            key = "new-lab-${currentUser.uid}",
             factory = viewModelFactory {
-              initializer { AddStudyViewModel(FirestoreStudiesRepository()) }
+              initializer { NewLabViewModel(LabRepository()) }
             }
           )
-          AddStudyScreen(
+          NewLabScreen(
             viewModel = viewModel,
             onBack = { backStack.removeLastOrNull() },
             onSaved = { backStack.removeLastOrNull() },
-          )
-        }
-        entry<Routes.StudyDetail> { route ->
-          val viewModel: StudyDetailViewModel = viewModel(
-            key = "detail-${route.studyId}-${currentUser.uid}",
-            factory = viewModelFactory {
-              initializer { StudyDetailViewModel(FirestoreStudiesRepository(), route.studyId) }
-            }
-          )
-          StudyDetailScreen(
-            viewModel = viewModel,
-            onBack = { backStack.removeLastOrNull() }
           )
         }
         entry<Routes.DoctorSummary> {
           val viewModel: DoctorSummaryViewModel = viewModel(
             key = "summary-${currentUser.uid}",
             factory = viewModelFactory {
-              initializer { DoctorSummaryViewModel(FirestoreStudiesRepository()) }
+              initializer { DoctorSummaryViewModel(LabRepository()) }
             }
           )
           DoctorSummaryScreen(

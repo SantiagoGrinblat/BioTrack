@@ -1,102 +1,275 @@
 {
   "id": "hemograma",
   "nombre": "Hemograma",
+  "sinonimos": ["hemograma completo"],
   "secciones": [
     {
       "id": "serie_roja",
-      "nombre": "Serie Roja",
-      "sinonimos": [
-        "recuento e indices de hematocritos"
-      ],
+      "nombre": "Serie roja",
       "parametros": [
         {
-          "id": "globulos_rojos",
-          "nombre": "Recuento de glóbulos rojos",
+          "id": "hemograma.globulos_rojos",
+          "nombre": "Glóbulos rojos",
           "sinonimos": [
-            "eritrocito",
             "eritrocitos",
             "hematíes",
             "glóbulos rojos",
-            "recuento eritrocitario"
+            "rbc",
+            "recuento de eritrocitos",
+            "recuento de hematíes",
+            "recuento de glóbulos rojos",
+            "gr"
           ],
-          "unidad": "/mm3"
+          "unidades": [
+            "mill/mm3",
+            "millones/mm3",
+            "10^6/mm3",
+            "10^6/µL",
+            "mill/µL",
+            "x10^12/L"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "hematocrito",
+          "id": "hemograma.hematocrito",
           "nombre": "Hematocrito",
           "sinonimos": [
-            "HCT"
+            "hto",
+            "hto.",
+            "hct",
+            "hcto",
+            "htc",
+            "htco",
+            "vg",
+            "volumen globular",
+            "valor de hematocrito",
+            "índice de hematocrito",
+            "hematocrit",
+            "pcv",
+            "packed cell volume"
           ],
-          "unidad": "%"
+          "unidades": [
+            "%",
+            "L/L",
+            "fraccion"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "hemoglobina",
+          "id": "hemograma.hemoglobina",
           "nombre": "Hemoglobina",
           "sinonimos": [
-            "HGB",
-            "Hb"
+            "hb",
+            "hgb",
+            "hemoglobina total",
+            "hemoglobina sanguínea",
+            "hemoglobin",
+            "dosaje de hemoglobina"
           ],
-          "unidad": "g/dL"
+          "unidades": [
+            "gr/dL",
+            "g/dL",
+            "g/dl",
+            "gr/dl",
+            "g/L",
+            "mg/dL"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "vcm",
-          "nombre": "Volumen corpuscular medio",
+          "id": "hemograma.vcm",
+          "nombre": "VCM",
           "sinonimos": [
+            "volumen corpuscular medio",
+            "mcv",
             "VCM",
-            "MCV"
+            "mean corpuscular volume",
+            "volumen medio eritrocitario",
+            "volumen globular medio"
           ],
-          "unidad": "fL"
+          "unidades": [
+            "fL",
+            "fl",
+            "µm3",
+            "µm³"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "hcm",
-          "nombre": "Hemoglobina corpuscular media",
+          "id": "hemograma.hcm",
+          "nombre": "HCM",
           "sinonimos": [
-            "HCM",
-            "MCH",
-            "MCM"
+            "hemoglobina corpuscular media",
+            "hcm",
+            "mch",
+            "mch-hcm",
+            "hemoglobina globular media",
+            "mean corpuscular hemoglobin"
           ],
-          "unidad": "pg"
+          "unidades": [
+            "picogr",
+            "pg",
+            "pg/cel",
+            "pg/célula"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "rdw",
-          "nombre": "Amplitud de distribución eritrocitaria",
+          "id": "hemograma.chcm",
+          "nombre": "CHCM",
           "sinonimos": [
-            "RDW"
+            "concentración de hemoglobina corpuscular media",
+            "concentracion de hemoglobina corpuscular media",
+            "concentración corpuscular media de hemoglobina",
+            "cc.hemoblob.corpusc.media(MCHC)-CHCM",
+            "chcm",
+            "mchc",
+            "mean corpuscular hemoglobin concentration",
+            "concentracion hemoglobina corpuscular media",
+            "conc hemoglobina corpuscular media",
+            "ccmh",
+            "cc mh"
           ],
-          "unidad": "%"
+          "unidades": [
+            "gr/dL",
+            "g/dL",
+            "g/dl",
+            "gr/dl",
+            "%"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "mpv",
-          "nombre": "Volumen plaquetario medio",
+          "id": "hemograma.rdw",
+          "nombre": "RDW",
           "sinonimos": [
-            "MPV",
-            "VPM"
+            "ade",
+            "índice de distribución eritrocitaria",
+            "indice distrib eritroc",
+            "índice distrib. eritroc",
+            "ancho de distribución eritrocitaria",
+            "amplitud de distribución eritrocitaria",
+            "red cell distribution width",
+            "rdw",
+            "dispersion de la curva de distribucion",
+            "ancho de distrib eritrocitos"
           ],
-          "unidad": "fL"
+          "unidades": [
+            "%"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "pct",
+          "id": "hemograma.vpm",
+          "nombre": "VPM",
+          "sinonimos": [
+            "mpv",
+            "volumen plaquetario medio",
+            "volumen medio plaquetario",
+            "mean platelet volume",
+            "vpm"
+          ],
+          "unidades": [
+            "fL",
+            "fl"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hemograma.pct",
           "nombre": "Plaquetocrito",
           "sinonimos": [
-            "PCT"
+            "pct",
+            "plaquetocrito",
+            "plaquetocrit",
+            "plateletcrit",
+            "platelet crit"
           ],
-          "unidad": "%"
+          "unidades": [
+            "%",
+            "L/L"
+          ],
+          "tipo": "numero"
         },
         {
-          "id": "pdw",
-          "nombre": "Ancho de distribución plaquetaria",
+          "id": "hemograma.pdw",
+          "nombre": "PDW",
           "sinonimos": [
-            "PDW"
+            "índice de distribución plaquetaria",
+            "indice distrib plaquet",
+            "indice distrib.plaquet.",
+            "ancho de distribución plaquetaria",
+            "amplitud de distribución plaquetaria",
+            "pdw",
+            "platelet distribution width"
           ],
-          "unidad": null
+          "unidades": [
+            "%",
+            "fL",
+            "fl",
+            "10(GSD)"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hemograma.nrbc",
+          "nombre": "Eritrocitos nucleados",
+          "sinonimos": [
+            "nrbc",
+            "nucleated red blood cells",
+            "eritrocitos nucleados",
+            "hematíes nucleados",
+            "hematies nucleados",
+            "glóbulos rojos nucleados",
+            "globulos rojos nucleados",
+            "eritroblastos"
+          ],
+          "unidades": [
+            "%",
+            "10^3/µL",
+            "10^9/L",
+            "/100 leucocitos"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hemograma.reticulocitos",
+          "nombre": "Reticulocitos",
+          "sinonimos": [
+            "reticulocitos",
+            "reticulocyte count",
+            "reticulocyte",
+            "recuento de reticulocitos",
+            "recuento reticulocitario",
+            "retics",
+            "retic"
+          ],
+          "unidades": [
+            "%",
+            "10^3/µL",
+            "10^9/L",
+            "mill/µL"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hemograma.rdw_sd",
+          "nombre": "RDW-SD",
+          "sinonimos": [
+            "rdw sd",
+            "rdw-sd",
+            "red cell distribution width standard deviation",
+            "desviación estándar de la distribución eritrocitaria",
+            "desviacion estandar de la distribucion eritrocitaria",
+            "amplitud de distribución eritrocitaria sd"
+          ],
+          "unidades": [
+            "fL",
+            "fl"
+          ],
+          "tipo": "numero"
         }
       ]
-    },
-    {
-      "id": "serie_blanca",
-      "nombre": "Serie Blanca",
-      "sinonimos": [],
-      "parametros": []
     }
   ]
 }
