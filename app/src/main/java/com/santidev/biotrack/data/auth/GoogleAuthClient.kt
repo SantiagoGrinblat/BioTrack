@@ -24,14 +24,14 @@ class GoogleAuthClient(private val appContext: Context) {
   
   val currentUser: FirebaseUser? get() = auth.currentUser
   
-  // Emite el usuario actual y cada vez que cambia (login / logout)
+  //este emite el usuario actual y cada vez que se cambia (login / logout)
   val authState: Flow<FirebaseUser?> = callbackFlow {
     val listener = FirebaseAuth.AuthStateListener { trySend(it.currentUser) }
     auth.addAuthStateListener(listener)
     awaitClose { auth.removeAuthStateListener(listener) }
   }
   
-  // activityContext tiene que ser una Activity
+  //activityContext si o si tiene que ser una Activity
   suspend fun signIn(activityContext: Context): Result<FirebaseUser> {
     return try {
       val option = GetSignInWithGoogleOption.Builder(

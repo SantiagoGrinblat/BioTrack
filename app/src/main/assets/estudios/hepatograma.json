@@ -1,0 +1,302 @@
+{
+  "id": "hepatograma",
+  "nombre": "Hepatograma",
+  "sinonimos": [
+    "hepatograma completo",
+    "hepatograma (aa)",
+    "perfil hepático",
+    "perfil hepatico",
+    "funcional hepático",
+    "funcional hepatico",
+    "función hepática",
+    "funcion hepatica"
+  ],
+  "secciones": [
+    {
+      "id": "bilirrubinas",
+      "nombre": "Bilirrubinas",
+      "parametros": [
+        {
+          "id": "hepatograma.bilirrubina_total",
+          "nombre": "Bilirrubina total",
+          "sinonimos": [
+            "bilirrubina total",
+            "bilirrubinemia total",
+            "bilirrubina sérica total",
+            "bilirrubina serica total",
+            "bilirrubina t",
+            "bt",
+            "total bilirubin"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.bilirrubina_directa",
+          "nombre": "Bilirrubina directa",
+          "sinonimos": [
+            "bilirrubina directa",
+            "bilirrubina conjugada",
+            "bilirrubina d",
+            "bd",
+            "direct bilirubin"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.bilirrubina_indirecta",
+          "nombre": "Bilirrubina indirecta",
+          "sinonimos": [
+            "bilirrubina indirecta",
+            "bilirrubina no conjugada",
+            "bilirrubina i",
+            "bi",
+            "indirect bilirubin"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "enzimas",
+      "nombre": "Enzimas hepáticas",
+      "parametros": [
+        {
+          "id": "hepatograma.tgo",
+          "nombre": "TGO",
+          "sinonimos": [
+            "tgo",
+            "got",
+            "ast",
+            "tgo-ast",
+            "transaminasa glutámico oxalacética",
+            "transaminasa glutamico oxalacetica",
+            "transaminasa g.o.t.",
+            "transaminasa got",
+            "aspartato aminotransferasa",
+            "aspartato amino transferasa",
+            "tgo-ast-transamin.glutamico-oxalacetica",
+            "tgo-transaminasa glutamico oxalacetica"
+          ],
+          "unidades": [
+            "U/L",
+            "U/l",
+            "UI/L",
+            "UI/l"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.tgp",
+          "nombre": "TGP",
+          "sinonimos": [
+            "tgp",
+            "gpt",
+            "alt",
+            "tgp-alt",
+            "transaminasa glutámico pirúvica",
+            "transaminasa glutamico piruvica",
+            "transaminasa g.p.t.",
+            "transaminasa gpt",
+            "alanina aminotransferasa",
+            "alanina amino transferasa",
+            "tgp-alt-transamin glutamico-piruvica",
+            "tgp-transaminasa glutamico piruvica"
+          ],
+          "unidades": [
+            "U/L",
+            "U/l",
+            "UI/L",
+            "UI/l"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.fosfatasa_alcalina",
+          "nombre": "Fosfatasa alcalina",
+          "sinonimos": [
+            "fosfatasa alcalina",
+            "fosfatasa alcalina total",
+            "fosfatasa alcalina (fal)",
+            "fosf. alcalina",
+            "fal",
+            "alp",
+            "alkaline phosphatase"
+          ],
+          "unidades": [
+            "U/L",
+            "U/l",
+            "UI/L",
+            "UI/l"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "proteinas",
+      "nombre": "Proteínas",
+      "parametros": [
+        {
+          "id": "hepatograma.proteinas_totales",
+          "nombre": "Proteínas totales",
+          "sinonimos": [
+            "proteínas totales",
+            "proteinas totales",
+            "proteínas séricas totales",
+            "proteinas sericas totales",
+            "proteínas",
+            "proteinas",
+            "proteinemia",
+            "total protein"
+          ],
+          "unidades": [
+            "g/dL",
+            "g/dl",
+            "gr/dL",
+            "gr/dl",
+            "gr%",
+            "g%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.albumina",
+          "nombre": "Albúmina",
+          "sinonimos": [
+            "albúmina",
+            "albumina",
+            "albúmina sérica",
+            "albumina serica",
+            "alb",
+            "albumin"
+          ],
+          "unidades": [
+            "g/dL",
+            "g/dl",
+            "gr/dL",
+            "gr/dl",
+            "gr%",
+            "g%"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "lipidos",
+      "nombre": "Lípidos",
+      "parametros": [
+        {
+          "id": "hepatograma.colesterol_total",
+          "nombre": "Colesterol total",
+          "sinonimos": [
+            "colesterol total",
+            "colesterol",
+            "colesterolemia",
+            "col total",
+            "colesterol t",
+            "cholesterol",
+            "total cholesterol"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.hdl",
+          "nombre": "Colesterol HDL",
+          "sinonimos": [
+            "colesterol hdl",
+            "hdl",
+            "hdl-colesterol",
+            "hdl colesterol",
+            "hdl-c",
+            "c-hdl",
+            "col hdl",
+            "colesterol de alta densidad"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.ldl",
+          "nombre": "Colesterol LDL",
+          "sinonimos": [
+            "colesterol ldl",
+            "ldl",
+            "ldl-colesterol",
+            "ldl colesterol",
+            "ldl-c",
+            "c-ldl",
+            "col ldl",
+            "colesterol de baja densidad"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.trigliceridos",
+          "nombre": "Triglicéridos",
+          "sinonimos": [
+            "triglicéridos",
+            "trigliceridos",
+            "triglicéridos séricos",
+            "trigliceridos sericos",
+            "tg",
+            "tag",
+            "triglycerides"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "mg%"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "hepatograma.castelli",
+          "nombre": "Factor de riesgo coronario (Castelli)",
+          "sinonimos": [
+            "factor de riesgo coronario (castelli)",
+            "factor de riesgo coronario",
+            "castelli",
+            "índice de castelli",
+            "indice de castelli",
+            "riesgo coronario",
+            "colesterol total/hdl",
+            "relación colesterol total/hdl",
+            "relacion colesterol total/hdl"
+          ],
+          "unidades": [],
+          "tipo": "numero"
+        }
+      ]
+    }
+  ]
+}

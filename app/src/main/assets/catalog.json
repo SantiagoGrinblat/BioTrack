@@ -1,4 +1,3 @@
-
 {
   "estudios": [
     {
@@ -18,7 +17,8 @@
         "analisis de orina",
         "orina completa",
         "uroanalisis",
-        "examen general de orina"
+        "examen general de orina",
+        "examen automatizado de orina"
       ],
       "archivo": "estudios/examen_orina.json"
     },

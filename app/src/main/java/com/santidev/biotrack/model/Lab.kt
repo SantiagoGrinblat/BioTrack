@@ -14,7 +14,8 @@ data class LabResult(
   val value: String = "",
   val unit: String = "",
   val minutes: Int? = null,
-  val seconds: Int? = null
+  val seconds: Int? = null,
+  val description: String = "",
 )
 
 fun LabResult.display(): String = listOfNotNull(

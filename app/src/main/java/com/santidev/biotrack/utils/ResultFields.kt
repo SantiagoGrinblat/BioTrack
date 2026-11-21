@@ -26,7 +26,9 @@ data class ResultForm(
   val useMinutes: Boolean = false,
   val minutes: String = "",
   val useSeconds: Boolean = false,
-  val seconds: String = ""
+  val seconds: String = "",
+  val description: String = "",
+  val needsReview: Boolean = false
 ) {
   val hasResult: Boolean
     get() = value.isNotBlank() ||
@@ -34,7 +36,7 @@ data class ResultForm(
       (useSeconds && seconds.isNotBlank())
   
   val isEmpty: Boolean
-    get() = name.isBlank() && unit.isBlank() && !hasResult
+    get() = name.isBlank() && unit.isBlank() && description.isBlank() && !hasResult
 }
 
 // De un estudio guardado al formulario (para editarlo)
@@ -45,7 +47,8 @@ fun LabResult.toForm() = ResultForm(
   useMinutes = minutes != null,
   minutes = minutes?.toString().orEmpty(),
   useSeconds = seconds != null,
-  seconds = seconds?.toString().orEmpty()
+  seconds = seconds?.toString().orEmpty(),
+  description = description,
 )
 
 // Del formulario al estudio que se guarda
@@ -54,7 +57,8 @@ fun ResultForm.toLabResult() = LabResult(
   value = value.trim(),
   unit = unit.trim(),
   minutes = if (useMinutes) minutes.toIntOrNull() else null,
-  seconds = if (useSeconds) seconds.toIntOrNull() else null
+  seconds = if (useSeconds) seconds.toIntOrNull() else null,
+  description = description,
 )
 
 // Los campos de un estudio: nombre, resultado, unidad y, si es un tiempo, minutos y segundos.
@@ -122,5 +126,13 @@ fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
         modifier = Modifier.fillMaxWidth()
       )
     }
+    OutlinedTextField(
+      value = row.description,
+      onValueChange = { text -> onChange(row.copy(description = text)) },
+      label = { Text("Descripción del estudio (opcional)") },
+      minLines = 1,
+      maxLines = 3,
+      modifier = Modifier.fillMaxWidth()
+    )
   }
 }

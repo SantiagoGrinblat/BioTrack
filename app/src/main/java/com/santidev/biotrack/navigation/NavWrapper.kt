@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
@@ -13,6 +14,9 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.santidev.biotrack.data.LabRepository
+import com.santidev.biotrack.data.catalog.CatalogRepository
+import com.santidev.biotrack.data.scanner.LabScanner
+import com.santidev.biotrack.data.scanner.TextRecognizerService
 import com.santidev.biotrack.ui.composables.auth.AuthViewModel
 import com.santidev.biotrack.ui.composables.auth.LoginScreen
 import com.santidev.biotrack.ui.screens.infoScreen.NewLabScreen
@@ -26,6 +30,15 @@ import com.santidev.biotrack.ui.screens.summaryScreen.DoctorSummaryViewModel
 fun NavWrapper(authViewModel: AuthViewModel) {
   val user by authViewModel.user.collectAsStateWithLifecycle()
   val currentUser = user
+  
+  // El escáner se arma una sola vez: lee la foto (ML Kit) y consulta el catálogo de assets
+  val context = LocalContext.current
+  val labScanner = remember {
+    LabScanner(
+      recognizer = TextRecognizerService(context.applicationContext),
+      catalog = CatalogRepository.fromAssets(context)
+    )
+  }
   
   if (currentUser == null) {
     LoginScreen(authViewModel)
@@ -57,7 +70,7 @@ fun NavWrapper(authViewModel: AuthViewModel) {
           val viewModel: NewLabViewModel = viewModel(
             key = "new-lab-${currentUser.uid}",
             factory = viewModelFactory {
-              initializer { NewLabViewModel(LabRepository()) }
+              initializer { NewLabViewModel(LabRepository(), labScanner) }
             }
           )
           NewLabScreen(

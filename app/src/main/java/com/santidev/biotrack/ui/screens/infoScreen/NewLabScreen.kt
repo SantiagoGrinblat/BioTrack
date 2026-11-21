@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,6 +17,8 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.santidev.biotrack.ui.composables.scanner.rememberDocumentScanner
 import com.santidev.biotrack.utils.ResultFields
 import com.santidev.biotrack.utils.ResultForm
 import com.santidev.biotrack.ui.formatDate
@@ -49,6 +53,10 @@ fun NewLabScreen(
   onSaved: () -> Unit,
 ) {
   var showDatePicker by remember { mutableStateOf(false) }
+  val startScanner = rememberDocumentScanner(
+    onResult = viewModel::scan,
+    onError = viewModel::onScanError
+  )
   
   Scaffold(
     topBar = {
@@ -80,6 +88,30 @@ fun NewLabScreen(
       contentPadding = PaddingValues(16.dp),
       verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
+      item {
+        OutlinedButton(
+          onClick = startScanner,
+          enabled = !viewModel.scanning,
+          modifier = Modifier.fillMaxWidth().height(56.dp)
+        ) {
+          if (viewModel.scanning) {
+            CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
+            Spacer(Modifier.width(8.dp))
+            Text("Leyendo el informe...")
+          } else {
+            Text("Escanear informe")
+          }
+        }
+      }
+      if (viewModel.results.any { it.needsReview }) {
+        item {
+          Text(
+            "Datos leídos del papel. Compará cada uno con el original antes de guardar; " +
+              "los marcados en color son los más dudosos.",
+            style = MaterialTheme.typography.bodyMedium
+          )
+        }
+      }
       item {
         OutlinedTextField(
           value = viewModel.title,
@@ -140,11 +172,21 @@ fun NewLabScreen(
 
 @Composable
 private fun ResultCard(row: ResultForm, viewModel: NewLabViewModel) {
-  Card(modifier = Modifier.fillMaxWidth()) {
+  Card(
+    modifier = Modifier.fillMaxWidth(),
+    colors = if (row.needsReview) {
+      CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
+    } else {
+      CardDefaults.cardColors()
+    }
+  ) {
     Column(
       modifier = Modifier.padding(16.dp),
       verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
+      if (row.needsReview) {
+        Text("Revisá este dato: puede estar mal leído.", style = MaterialTheme.typography.labelLarge)
+      }
       ResultFields(row) { updated -> viewModel.change(row.id) { updated } }
       TextButton(onClick = { viewModel.removeResult(row.id) }) { Text("Quitar estudio") }
     }

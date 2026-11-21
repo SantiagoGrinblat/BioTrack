@@ -100,6 +100,9 @@ private fun SummaryCard(item: SummaryItem) {
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.Bold
       )
+      if (item.result.description.isNotBlank()) {
+        Text(item.result.description, style = MaterialTheme.typography.bodySmall)
+      }
       
       if (comparison == null) {
         Text(

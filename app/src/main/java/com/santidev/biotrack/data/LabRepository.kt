@@ -10,15 +10,15 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-// Guarda en: users/{uid}/labs/{id}
+//esto guarda en: users/{uid}/labs/{id}
 class LabRepository(
   private val db: FirebaseFirestore = FirebaseFirestore.getInstance(),
   private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 ) {
   
-  // El uid se lee en cada llamada, así sigue andando si cambia la cuenta
+  //el uid se lee en cada llamada, asi sigue andando en caso de que se cambia la cuenta
   private fun labs() = db.collection("users")
-    .document(requireNotNull(auth.currentUser?.uid) { "No hay sesión iniciada" })
+    .document(requireNotNull(auth.currentUser?.uid) { "No hay sesion iniciada" })
     .collection("labs")
   
   fun observeLabs(): Flow<List<Lab>> = callbackFlow {
@@ -34,8 +34,8 @@ class LabRepository(
     awaitClose { listener.remove() }
   }
   
-  // Sin esperar la respuesta: así no se cuelga si no hay internet.
-  // Firestore lo sube solo cuando vuelve la conexión.
+  //sin esperar la respuesta: asi no se cuelga si no hay internet.
+  //firestore solo sube el laboratorio cuando vuelve la conexion a internet.
   fun save(title: String, date: Long, results: List<LabResult>) {
     val data = mapOf(
       "title" to title,
@@ -46,9 +46,9 @@ class LabRepository(
       .addOnFailureListener { Log.e("LabRepository", "No se pudo guardar el laboratorio", it) }
   }
   
-  // Sin esperar la respuesta (igual que save): así no se cuelga si no hay internet
+  //sin esperar la respuesta (igual que save) asi no se cuelga si no hay internet
   fun delete(labIds: List<String>) {
-    labIds.chunked(450).forEach { chunk ->   // un batch admite hasta 500 operaciones
+    labIds.chunked(450).forEach { chunk -> //un batch admite hasta 500 operaciones (en teoria)
       val batch = db.batch()
       chunk.forEach { id -> batch.delete(labs().document(id)) }
       batch.commit()
@@ -56,16 +56,17 @@ class LabRepository(
     }
   }
   
-  // Un estudio como lo guarda Firestore
+  //un estudio, como lo guarda Firestore
   private fun LabResult.toMap() = mapOf(
     "name" to name,
     "value" to value,
     "unit" to unit,
     "minutes" to minutes,
-    "seconds" to seconds
+    "seconds" to seconds,
+    "description" to description
   )
   
-  // Cambia solo los estudios de un laboratorio (título y fecha no se tocan)
+  //cambia solo los valores del estudio de un laboratorio (titulo y fecha no se tocan)
   fun updateResults(labId: String, results: List<LabResult>) {
     labs().document(labId).update("results", results.map { it.toMap() })
       .addOnFailureListener { Log.e("LabRepository", "No se pudo actualizar el laboratorio", it) }

@@ -33,6 +33,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,8 +42,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santidev.biotrack.model.Lab
 import com.santidev.biotrack.model.LabResult
@@ -64,12 +68,22 @@ fun LabListScreen(
   BackHandler(enabled = viewModel.selectionMode) { viewModel.cancelSelection() }
   
   Scaffold(
+    containerColor = Color(0xFF9FADB7),
     topBar = {
       if (viewModel.selectionMode) {
         TopAppBar(
+          colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF9FADB7),
+            titleContentColor = Color.Black,
+            actionIconContentColor = Color.Red
+          ),
           title = {
             val n = viewModel.selectedIds.size
-            Text(if (n == 1) "1 seleccionado" else "$n seleccionados")
+            Text(
+              if (n == 1) "1 seleccionado" else "$n seleccionados",
+              fontWeight = FontWeight.SemiBold,
+              fontSize = 21.sp
+            )
           },
           navigationIcon = {
             IconButton(onClick = viewModel::cancelSelection) {
@@ -87,12 +101,30 @@ fun LabListScreen(
         )
       } else {
         TopAppBar(
-          title = { Text("Mis laboratorios") },
+          colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF9FADB7),
+            titleContentColor = Color.Black,
+            actionIconContentColor = Color.Red
+          ),
+          title = {
+            Text(
+              text = "Mis laboratorios",
+              fontWeight = FontWeight.SemiBold,
+              fontSize = 21.sp
+            )
+          },
           actions = {
             IconButton(onClick = viewModel::startSelection) {
               Icon(Icons.Default.Delete, contentDescription = "Borrar laboratorios")
             }
-            TextButton(onClick = onSignOut) { Text("Cerrar sesión") }
+            TextButton(onClick = onSignOut) {
+              Text(
+                text = "Cerrar sesión",
+                color = Color.Black,
+                fontWeight = FontWeight.Normal,
+                fontSize = 18.sp
+              )
+            }
           }
         )
       }
@@ -100,9 +132,16 @@ fun LabListScreen(
     floatingActionButton = {
       if (!viewModel.selectionMode) {
         ExtendedFloatingActionButton(
+          containerColor = Color(0xFF256862),
           onClick = onNewLab,
-          icon = { Icon(Icons.Default.Add, contentDescription = null) },
-          text = { Text("Nuevo laboratorio") }
+          icon = {
+            Icon(
+              imageVector = Icons.Default.Add,
+              contentDescription = null,
+              tint = Color.White
+            )
+          },
+          text = { Text("Nuevo laboratorio", color = Color.White) }
         )
       }
     }
@@ -110,12 +149,17 @@ fun LabListScreen(
     val list = labs
     when {
       list == null -> Box(
-        modifier = Modifier.fillMaxSize().padding(padding),
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(padding),
         contentAlignment = Alignment.Center
       ) { CircularProgressIndicator() }
       
       list.isEmpty() -> Box(
-        modifier = Modifier.fillMaxSize().padding(padding).padding(32.dp),
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(padding)
+          .padding(16.dp),
         contentAlignment = Alignment.Center
       ) {
         Text(
@@ -126,7 +170,9 @@ fun LabListScreen(
       }
       
       else -> LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(padding),
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(padding),
         contentPadding = PaddingValues(16.dp, 16.dp, 16.dp, 96.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
       ) {
@@ -134,7 +180,9 @@ fun LabListScreen(
           item {
             FilledTonalButton(
               onClick = onOpenSummary,
-              modifier = Modifier.fillMaxWidth().height(64.dp)
+              modifier = Modifier
+                .fillMaxWidth()
+                .height(64.dp)
             ) {
               Text("Resumen para el médico", style = MaterialTheme.typography.titleLarge)
             }
@@ -242,6 +290,9 @@ private fun ResultLine(result: LabResult, onEdit: () -> Unit) {
     Column(modifier = Modifier.weight(1f)) {
       Text(result.name, style = MaterialTheme.typography.titleMedium)
       Text(result.display(), style = MaterialTheme.typography.bodyLarge)
+      if (result.description.isNotBlank()) {
+        Text(result.description, style = MaterialTheme.typography.bodySmall)
+      }
     }
     IconButton(onClick = onEdit) {
       Icon(Icons.Default.Edit, contentDescription = "Editar estudio")

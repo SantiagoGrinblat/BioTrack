@@ -1,0 +1,247 @@
+{
+  "id": "examen_orina",
+  "nombre": "Examen de orina",
+  "parametros": [
+    {
+      "id": "examen_orina.color",
+      "nombre": "Color",
+      "sinonimos": [
+        "color",
+        "color de orina",
+        "color urinario"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.aspecto",
+      "nombre": "Aspecto",
+      "sinonimos": [
+        "aspecto",
+        "aspecto de orina",
+        "claridad",
+        "transparencia"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.densidad",
+      "nombre": "Densidad",
+      "sinonimos": [
+        "densidad",
+        "densidad urinaria",
+        "peso especifico",
+        "peso específico"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.ph",
+      "nombre": "pH",
+      "sinonimos": [
+        "ph",
+        "reaccion",
+        "reacción",
+        "ph urinario"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.proteinas",
+      "nombre": "Proteínas",
+      "sinonimos": [
+        "proteinas",
+        "proteínas",
+        "proteinuria",
+        "albumina",
+        "albúmina"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.glucosa",
+      "nombre": "Glucosa",
+      "sinonimos": [
+        "glucosa",
+        "glucosuria",
+        "azucar",
+        "azúcar"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.cetona",
+      "nombre": "Cetona",
+      "sinonimos": [
+        "cetona",
+        "cetonas",
+        "cuerpos cetonicos",
+        "cuerpos cetónicos",
+        "cetonuria"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.hemoglobina",
+      "nombre": "Hemoglobina",
+      "sinonimos": [
+        "hemoglobina",
+        "hemoglobina urinaria",
+        "sangre",
+        "blood"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.pigmentos_biliares",
+      "nombre": "Pigmentos biliares",
+      "sinonimos": [
+        "pigmentos biliares",
+        "pigmentos biliares urinarios",
+        "bilirrubina",
+        "bilirrubina urinaria"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.urobilina",
+      "nombre": "Urobilina",
+      "sinonimos": [
+        "urobilina",
+        "urobilina urinaria"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.esterasa_leucocitaria",
+      "nombre": "Esterasa leucocitaria",
+      "sinonimos": [
+        "esterasa leucocitaria",
+        "leucocito esterasa",
+        "leukocyte esterase",
+        "esterasa de leucocitos"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.nitritos",
+      "nombre": "Nitritos",
+      "sinonimos": [
+        "nitritos",
+        "nitrito",
+        "nitritos urinarios"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.celulas_epiteliales_escamosas",
+      "nombre": "Células epiteliales escamosas",
+      "sinonimos": [
+        "celulas epiteliales escamosas",
+        "células epiteliales escamosas",
+        "celulas escamosas",
+        "células escamosas",
+        "epiteliales escamosas"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.celulas_epiteliales_no_escamosas",
+      "nombre": "Células epiteliales no escamosas",
+      "sinonimos": [
+        "celulas epiteliales no escamosas",
+        "células epiteliales no escamosas",
+        "celulas no escamosas",
+        "células no escamosas",
+        "epiteliales no escamosas"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.leucocitos",
+      "nombre": "Leucocitos",
+      "sinonimos": [
+        "leucocitos",
+        "globulos blancos",
+        "glóbulos blancos",
+        "leucocitos urinarios",
+        "piocitos"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.leucocitos_agregados",
+      "nombre": "Leucocitos agregados",
+      "sinonimos": [
+        "leucocitos agregados",
+        "agregados leucocitarios",
+        "agrupaciones de leucocitos"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.hematies",
+      "nombre": "Hematíes",
+      "sinonimos": [
+        "hematies",
+        "hematíes",
+        "eritrocitos",
+        "globulos rojos",
+        "glóbulos rojos",
+        "hematies urinarios"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.cilindros",
+      "nombre": "Cilindros",
+      "sinonimos": [
+        "cilindros",
+        "cilindros urinarios",
+        "cilindruria"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.filamentos_mucus",
+      "nombre": "Filamentos de mucus",
+      "sinonimos": [
+        "filamentos de mucus",
+        "mucus",
+        "moco",
+        "filamentos mucosos",
+        "filamentos de moco"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    },
+    {
+      "id": "examen_orina.cristales",
+      "nombre": "Cristales",
+      "sinonimos": [
+        "cristales",
+        "cristales urinarios",
+        "cristaluria"
+      ],
+      "unidades": [],
+      "tipo": "texto"
+    }
+  ]
+}
