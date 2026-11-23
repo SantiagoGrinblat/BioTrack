@@ -59,6 +59,7 @@ class LabRepository(
   //un estudio, como lo guarda Firestore
   private fun LabResult.toMap() = mapOf(
     "name" to name,
+    "folder" to folder,
     "value" to value,
     "unit" to unit,
     "minutes" to minutes,

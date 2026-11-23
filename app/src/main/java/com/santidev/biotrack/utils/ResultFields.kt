@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.santidev.biotrack.model.LabResult
 import java.util.UUID
 
-// Una fila del formulario. Todo es texto porque así lo escribe el usuario;
-// al guardar, los minutos y segundos se pasan a número entero.
+
+//al guardar, los minutos y segundos se pasan a numero entero.
 data class ResultForm(
   val id: String = UUID.randomUUID().toString(),
   val name: String = "",
@@ -40,7 +40,7 @@ data class ResultForm(
     get() = name.isBlank() && unit.isBlank() && description.isBlank() && !hasResult
 }
 
-// De un estudio guardado al formulario (para editarlo)
+//de un estudio guardado se pasa al formulario (para editarlo)
 fun LabResult.toForm() = ResultForm(
   name = name,
   folder = folder,
@@ -53,7 +53,7 @@ fun LabResult.toForm() = ResultForm(
   description = description,
 )
 
-// Del formulario al estudio que se guarda
+//del formulario se pasa al estudio que se guarda
 fun ResultForm.toLabResult() = LabResult(
   name = name.trim(),
   folder = folder.trim(),
@@ -64,8 +64,8 @@ fun ResultForm.toLabResult() = LabResult(
   description = description,
 )
 
-// Los campos de un estudio: nombre, resultado, unidad y, si es un tiempo, minutos y segundos.
-// Los usan el formulario de nuevo laboratorio y el diálogo de editar.
+//los campos de un estudio son = nombre, carpeta a la pertenece, resultado, unidad, metodo de estudio, descripcion y si es un tiempo, minutos y segundos.
+//los usan el formulario de nuevo laboratorio y el dialogo de editar.
 @Composable
 fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
   Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -104,7 +104,7 @@ fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
       )
     }
     
-    // Si el resultado es un tiempo: se elige minutos y/o segundos y aparece su campo
+    //si el resultado es un tiempo = se elige minutos y/o segundos y aparece su campo
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
       FilterChip(
         selected = row.useMinutes,

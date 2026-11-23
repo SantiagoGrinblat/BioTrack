@@ -11,12 +11,12 @@ data class Lab(
 
 data class LabResult(
   val name: String = "",
+  val folder: String = "",
   val value: String = "",
   val unit: String = "",
   val minutes: Int? = null,
   val seconds: Int? = null,
   val description: String = "",
-  val folder: String = "",
 )
 
 fun LabResult.display(): String = listOfNotNull(
