@@ -26,10 +26,29 @@
       "id": "hepatograma",
       "nombre": "Hepatograma",
       "sinonimos": [
+        "hepatograma completo",
+        "hepatograma (aa)",
         "perfil hepatico",
+        "funcional hepatico",
+        "funcion hepatica",
         "pruebas hepaticas"
       ],
       "archivo": "estudios/hepatograma.json"
+    },
+    {
+      "id": "estudios_extras",
+      "nombre": "Estudios extras",
+      "sinonimos": [
+        "ferritina",
+        "urea", "urea en sangre", "urea en suero", "urea serica", "uremia",
+        "creatinina", "creatinina en sangre", "creatinina en suero", "creatinina serica",
+        "acido urico", "acido urico en sangre", "acido urico en suero", "acido urico serico",
+        "antigeno prostatico especifico (psa) total", "antigeno prostatico especifico total", "psa total",
+        "glucemia",
+        "coagulograma", "tiempo de coagulacion", "tiempo de sangria", "tiempo de protrombina", "kptt",
+        "ionograma", "ionograma serico"
+      ],
+      "archivo": "estudios/estudios_extras.json"
     }
   ]
 }

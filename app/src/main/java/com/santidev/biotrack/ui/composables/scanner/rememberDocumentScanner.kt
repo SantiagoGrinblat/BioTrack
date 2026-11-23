@@ -13,8 +13,9 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 
-// Abre el escáner de documentos de Google (recorta, corrige la perspectiva y permite
-// elegir fotos de la galería) y devuelve las imágenes. La función que devuelve abre el escáner.
+//abre el escaner de documentos de Google (recorta, corrige la perspectiva y permite
+//elegir fotos de la galeria) y devuelve las imáaenes.
+//la funcion que devuelve abre el escaner.
 @Composable
 fun rememberDocumentScanner(
   onResult: (List<Uri>) -> Unit,

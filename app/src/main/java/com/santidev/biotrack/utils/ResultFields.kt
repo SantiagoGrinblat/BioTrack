@@ -21,6 +21,7 @@ import java.util.UUID
 data class ResultForm(
   val id: String = UUID.randomUUID().toString(),
   val name: String = "",
+  val folder: String = "",
   val value: String = "",
   val unit: String = "",
   val useMinutes: Boolean = false,
@@ -28,7 +29,7 @@ data class ResultForm(
   val useSeconds: Boolean = false,
   val seconds: String = "",
   val description: String = "",
-  val needsReview: Boolean = false
+  val needsReview: Boolean = false,
 ) {
   val hasResult: Boolean
     get() = value.isNotBlank() ||
@@ -42,6 +43,7 @@ data class ResultForm(
 // De un estudio guardado al formulario (para editarlo)
 fun LabResult.toForm() = ResultForm(
   name = name,
+  folder = folder,
   value = value,
   unit = unit,
   useMinutes = minutes != null,
@@ -54,6 +56,7 @@ fun LabResult.toForm() = ResultForm(
 // Del formulario al estudio que se guarda
 fun ResultForm.toLabResult() = LabResult(
   name = name.trim(),
+  folder = folder.trim(),
   value = value.trim(),
   unit = unit.trim(),
   minutes = if (useMinutes) minutes.toIntOrNull() else null,
@@ -70,6 +73,15 @@ fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
       value = row.name,
       onValueChange = { text -> onChange(row.copy(name = text)) },
       label = { Text("Estudio (ej. Hematocrito)") },
+      singleLine = true,
+      keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
+      modifier = Modifier.fillMaxWidth()
+    )
+    
+    OutlinedTextField(
+      value = row.folder,
+      onValueChange = { text -> onChange(row.copy(folder = text)) },
+      label = { Text("Carpeta (ej. Hepatograma)") },
       singleLine = true,
       keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
       modifier = Modifier.fillMaxWidth()
@@ -109,7 +121,13 @@ fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
     if (row.useMinutes) {
       OutlinedTextField(
         value = row.minutes,
-        onValueChange = { text -> onChange(row.copy(minutes = text.filter(Char::isDigit).take(4))) },
+        onValueChange = { text ->
+          onChange(
+            row.copy(
+              minutes = text.filter(Char::isDigit).take(4)
+            )
+          )
+        },
         label = { Text("Minutos (número entero)") },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -119,7 +137,13 @@ fun ResultFields(row: ResultForm, onChange: (ResultForm) -> Unit) {
     if (row.useSeconds) {
       OutlinedTextField(
         value = row.seconds,
-        onValueChange = { text -> onChange(row.copy(seconds = text.filter(Char::isDigit).take(4))) },
+        onValueChange = { text ->
+          onChange(
+            row.copy(
+              seconds = text.filter(Char::isDigit).take(4)
+            )
+          )
+        },
         label = { Text("Segundos (número entero)") },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),

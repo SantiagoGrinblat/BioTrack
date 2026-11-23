@@ -4,20 +4,21 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.santidev.biotrack.data.LabRepository
-import com.santidev.biotrack.domain.SummaryItem
+import com.santidev.biotrack.domain.SummaryFolder
 import com.santidev.biotrack.domain.buildSummary
+import com.santidev.biotrack.domain.groupByFolder
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlin.collections.emptyList
 
 class DoctorSummaryViewModel(repository: LabRepository) : ViewModel() {
   
-  // null = cargando todavía; lista vacía = no hay datos
-  val items: StateFlow<List<SummaryItem>?> = repository.observeLabs()
-    .map { labs -> buildSummary(labs) }
+  //null = la lista esta cargando todavia,
+  //lista vacia = no hay datos en esa lista
+  val items: StateFlow<List<SummaryFolder>?> = repository.observeLabs()
+    .map { labs -> groupByFolder(buildSummary(labs)) }
     .catch { error ->
       Log.e("DoctorSummaryViewModel", "Error al armar el resumen", error)
       emit(emptyList())

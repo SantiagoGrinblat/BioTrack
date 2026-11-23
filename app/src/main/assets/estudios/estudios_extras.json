@@ -1,0 +1,263 @@
+{
+  "id": "estudios_extras",
+  "nombre": "Estudios extras",
+  "secciones": [
+    {
+      "id": "ferritina",
+      "nombre": "Ferritina",
+      "parametros": [
+        {
+          "id": "estudios_extras.ferritina",
+          "nombre": "Ferritina",
+          "sinonimos": [
+            "ferritina",
+            "ferritina en sangre",
+            "ferritina en suero",
+            "ferritina sérica",
+            "ferritina serica"
+          ],
+          "unidades": [
+            "ng/mL",
+            "ng/ml"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "urea",
+      "nombre": "Urea",
+      "parametros": [
+        {
+          "id": "estudios_extras.urea",
+          "nombre": "Urea",
+          "sinonimos": [
+            "urea",
+            "urea en sangre",
+            "urea en suero",
+            "urea sérica",
+            "urea serica",
+            "uremia"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "g/L",
+            "g/l"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "creatinina",
+      "nombre": "Creatinina",
+      "parametros": [
+        {
+          "id": "estudios_extras.creatinina",
+          "nombre": "Creatinina",
+          "sinonimos": [
+            "creatinina",
+            "creatinina en sangre",
+            "creatinina en suero",
+            "creatinina sérica",
+            "creatinina serica"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "acido_urico",
+      "nombre": "Ácido úrico",
+      "parametros": [
+        {
+          "id": "estudios_extras.acido_urico",
+          "nombre": "Ácido úrico",
+          "sinonimos": [
+            "ácido úrico",
+            "acido urico",
+            "ácido úrico en sangre",
+            "acido urico en sangre",
+            "ácido úrico en suero",
+            "acido urico en suero",
+            "ácido úrico sérico",
+            "acido urico serico",
+            "urico, acido - sérico",
+            "urico, acido - serico"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "psa",
+      "nombre": "Antígeno prostático específico (PSA) total",
+      "parametros": [
+        {
+          "id": "estudios_extras.psa_total",
+          "nombre": "PSA total",
+          "sinonimos": [
+            "antígeno prostático específico (psa) total",
+            "antigeno prostatico especifico (psa) total",
+            "antígeno prostático específico total",
+            "antigeno prostatico especifico total",
+            "antígeno prostático específico total - psa-t",
+            "antigeno prostatico especifico total - psa-t",
+            "psa total",
+            "psa-t",
+            "psa"
+          ],
+          "unidades": [
+            "ng/mL",
+            "ng/ml"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "glucemia",
+      "nombre": "Glucemia",
+      "parametros": [
+        {
+          "id": "estudios_extras.glucemia",
+          "nombre": "Glucemia",
+          "sinonimos": [
+            "glucemia",
+            "glucemia en sangre",
+            "glucemia en suero"
+          ],
+          "unidades": [
+            "mg/dL",
+            "mg/dl",
+            "g/L",
+            "g/l"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    },
+    {
+      "id": "coagulograma",
+      "nombre": "Coagulograma",
+      "parametros": [
+        {
+          "id": "estudios_extras.tiempo_coagulacion",
+          "nombre": "Tiempo de coagulación",
+          "sinonimos": [
+            "tiempo de coagulación",
+            "tiempo de coagulacion",
+            "coagulación, tiempo de",
+            "coagulacion, tiempo de"
+          ],
+          "unidades": [
+            "minutos",
+            "min",
+            "segundos",
+            "seg"
+          ],
+          "tipo": "tiempo"
+        },
+        {
+          "id": "estudios_extras.tiempo_sangria",
+          "nombre": "Tiempo de sangría",
+          "sinonimos": [
+            "tiempo de sangría",
+            "tiempo de sangria"
+          ],
+          "unidades": [
+            "minutos",
+            "min",
+            "segundos",
+            "seg"
+          ],
+          "tipo": "tiempo"
+        },
+        {
+          "id": "estudios_extras.tiempo_protrombina",
+          "nombre": "Tiempo de protrombina",
+          "sinonimos": [
+            "tiempo de protrombina",
+            "tiempo de protrombina (tp)",
+            "protrombina, tiempo de (tp)",
+            "protrombina, tiempo de",
+            "tp"
+          ],
+          "unidades": [
+            "minutos",
+            "min",
+            "segundos",
+            "seg"
+          ],
+          "tipo": "tiempo"
+        },
+        {
+          "id": "estudios_extras.kptt",
+          "nombre": "KPTT",
+          "sinonimos": [
+            "kptt",
+            "ttpc",
+            "kt",
+            "tiempo de tromboplastina (kptt / ttpc / kt)",
+            "tromboplastina, tiempo de (kptt / ttpc / kt)"
+          ],
+          "unidades": [
+            "minutos",
+            "min",
+            "segundos",
+            "seg"
+          ],
+          "tipo": "tiempo"
+        }
+      ]
+    },
+    {
+      "id": "ionograma",
+      "nombre": "Ionograma",
+      "parametros": [
+        {
+          "id": "estudios_extras.sodio",
+          "nombre": "Sodio",
+          "sinonimos": [
+            "sodio",
+            "sodio en sangre",
+            "sodio en suero",
+            "sodio sérico",
+            "sodio serico"
+          ],
+          "unidades": [
+            "mEq/L",
+            "mEq/l"
+          ],
+          "tipo": "numero"
+        },
+        {
+          "id": "estudios_extras.potasio",
+          "nombre": "Potasio",
+          "sinonimos": [
+            "potasio",
+            "potasemia",
+            "potasio en sangre",
+            "potasio en suero",
+            "potasio sérico",
+            "potasio serico"
+          ],
+          "unidades": [
+            "mEq/L",
+            "mEq/l"
+          ],
+          "tipo": "numero"
+        }
+      ]
+    }
+  ]
+}

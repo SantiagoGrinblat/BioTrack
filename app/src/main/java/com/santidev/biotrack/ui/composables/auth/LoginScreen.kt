@@ -28,13 +28,13 @@ fun LoginScreen(viewModel: AuthViewModel) {
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    Text("BioTrack", /*style = MaterialTheme.typography.displayMedium*/)
+    Text(text = "BioTrack", /*style = MaterialTheme.typography.displayMedium*/)
     Spacer(Modifier.height(32.dp))
     Button(
       onClick = { viewModel.signIn(context) },
       modifier = Modifier.fillMaxWidth()
     ) {
-      Text("Iniciar sesión con Google", /*style = MaterialTheme.typography.titleLarge*/)
+      Text(text = "Iniciar sesión con Google", /*style = MaterialTheme.typography.titleLarge*/)
     }
     error?.let {
       Spacer(Modifier.height(16.dp))

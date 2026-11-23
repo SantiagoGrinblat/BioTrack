@@ -22,7 +22,7 @@ class AuthViewModel(private val authClient: GoogleAuthClient) : ViewModel() {
   fun signIn(activityContext: Context) {
     viewModelScope.launch {
       authClient.signIn(activityContext)
-        .onFailure { _error.value = "No se pudo iniciar sesion. Intentalo de nuevo" }
+        .onFailure {_error.value = "No se pudo iniciar sesion. Intentalo de nuevo" }
     }
   }
   

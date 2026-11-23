@@ -13,7 +13,4 @@ sealed class Routes : NavKey {
   
   @Serializable
   data object DoctorSummary : Routes()
-  
-  @Serializable
-  data object ScanTest : Routes()
 }

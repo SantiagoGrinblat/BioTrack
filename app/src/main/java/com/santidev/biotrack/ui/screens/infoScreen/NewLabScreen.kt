@@ -1,7 +1,6 @@
 package com.santidev.biotrack.ui.screens.infoScreen
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,8 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -41,8 +38,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.santidev.biotrack.ui.composables.scanner.rememberDocumentScanner
-import com.santidev.biotrack.utils.ResultFields
-import com.santidev.biotrack.utils.ResultForm
 import com.santidev.biotrack.ui.formatDate
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,7 +56,7 @@ fun NewLabScreen(
   Scaffold(
     topBar = {
       TopAppBar(
-        title = { Text("Nuevo laboratorio") },
+        title = { Text(text = "Nuevo laboratorio") },
         navigationIcon = {
           IconButton(onClick = onBack) {
             Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
@@ -77,7 +72,7 @@ fun NewLabScreen(
             .fillMaxWidth()
             .padding(16.dp)
             .height(56.dp)
-        ) { Text("Guardar laboratorio", style = MaterialTheme.typography.titleMedium) }
+        ) { Text(text = "Guardar laboratorio", style = MaterialTheme.typography.titleMedium) }
       }
     }
   ) { padding ->
@@ -92,21 +87,23 @@ fun NewLabScreen(
         OutlinedButton(
           onClick = startScanner,
           enabled = !viewModel.scanning,
-          modifier = Modifier.fillMaxWidth().height(56.dp)
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
         ) {
           if (viewModel.scanning) {
             CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
             Spacer(Modifier.width(8.dp))
-            Text("Leyendo el informe...")
+            Text(text = "Leyendo el informe...")
           } else {
-            Text("Escanear informe")
+            Text(text = "Escanear informe")
           }
         }
       }
       if (viewModel.results.any { it.needsReview }) {
         item {
           Text(
-            "Datos leídos del papel. Compará cada uno con el original antes de guardar; " +
+            text = "Datos leídos del papel. Compará cada uno con el original antes de guardar; " +
               "los marcados en color son los más dudosos.",
             style = MaterialTheme.typography.bodyMedium
           )
@@ -116,7 +113,7 @@ fun NewLabScreen(
         OutlinedTextField(
           value = viewModel.title,
           onValueChange = viewModel::onTitleChange,
-          label = { Text("Título (ej. HEMOGRAMA)") },
+          label = { Text(text = "Título (ej. HEMOGRAMA)") },
           singleLine = true,
           modifier = Modifier.fillMaxWidth()
         )
@@ -127,7 +124,7 @@ fun NewLabScreen(
           modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-        ) { Text("Fecha: ${formatDate(viewModel.date)}") }
+        ) { Text(text = "Fecha: ${formatDate(viewModel.date)}") }
       }
       items(viewModel.results, key = { it.id }) { row ->
         ResultCard(row, viewModel)
@@ -141,17 +138,17 @@ fun NewLabScreen(
         ) {
           Icon(Icons.Default.Add, contentDescription = null)
           Spacer(Modifier.width(8.dp))
-          Text("Agregar estudio")
+          Text(text = "Agregar estudio")
         }
       }
       viewModel.error?.let { message ->
-        item { Text(message, color = MaterialTheme.colorScheme.error) }
+        item { Text(text = message, color = MaterialTheme.colorScheme.error) }
       }
     }
   }
   
   if (showDatePicker) {
-    // La fecha se guarda en UTC a medianoche, que es lo mismo que usa el selector
+    //la fecha se guarda en UTC a medianoche, que es lo mismo que usa el selector
     val pickerState = rememberDatePickerState(initialSelectedDateMillis = viewModel.date)
     DatePickerDialog(
       onDismissRequest = { showDatePicker = false },
@@ -159,36 +156,13 @@ fun NewLabScreen(
         TextButton(onClick = {
           pickerState.selectedDateMillis?.let(viewModel::onDateChange)
           showDatePicker = false
-        }) { Text("Aceptar") }
+        }) { Text(text = "Aceptar") }
       },
       dismissButton = {
-        TextButton(onClick = { showDatePicker = false }) { Text("Cancelar") }
+        TextButton(onClick = { showDatePicker = false }) { Text(text = "Cancelar") }
       }
     ) {
       DatePicker(state = pickerState)
-    }
-  }
-}
-
-@Composable
-private fun ResultCard(row: ResultForm, viewModel: NewLabViewModel) {
-  Card(
-    modifier = Modifier.fillMaxWidth(),
-    colors = if (row.needsReview) {
-      CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
-    } else {
-      CardDefaults.cardColors()
-    }
-  ) {
-    Column(
-      modifier = Modifier.padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-      if (row.needsReview) {
-        Text("Revisá este dato: puede estar mal leído.", style = MaterialTheme.typography.labelLarge)
-      }
-      ResultFields(row) { updated -> viewModel.change(row.id) { updated } }
-      TextButton(onClick = { viewModel.removeResult(row.id) }) { Text("Quitar estudio") }
     }
   }
 }

@@ -31,7 +31,7 @@ fun NavWrapper(authViewModel: AuthViewModel) {
   val user by authViewModel.user.collectAsStateWithLifecycle()
   val currentUser = user
   
-  // El escáner se arma una sola vez: lee la foto (ML Kit) y consulta el catálogo de assets
+  //el escaner se arma una sola vez: lee la foto (ML Kit) y consulta el catalogo de assets
   val context = LocalContext.current
   val labScanner = remember {
     LabScanner(
