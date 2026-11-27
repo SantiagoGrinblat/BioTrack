@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import com.santidev.biotrack.model.LabResult
 import java.util.UUID
 
-
 //al guardar, los minutos y segundos se pasan a numero entero.
 data class ResultForm(
   val id: String = UUID.randomUUID().toString(),

@@ -3,6 +3,8 @@ package com.santidev.biotrack.domain
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import org.junit.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 class ParseNumberTest {
   
@@ -20,8 +22,23 @@ class ParseNumberTest {
         "7.5" to 7.5,
         "25.51" to 25.51,
         "100.0" to 100.0,
+        "1.2345" to 1.2345,
       )
     )
+  }
+  
+  @ParameterizedTest(name = "[{index}] {0} -> {1}")
+  @CsvSource(
+    "7.5, 7.5",
+    "25.51, 25.51",
+    "100.0, 100.0",
+    "1.2345, 1.2345"
+  )
+  fun `el punto seguido de digitos se interpreta como decimal`(
+    input: String,
+    expected: Double
+  ) {
+    assertEquals(expected, parseNumber(input)!!, 0.000000001)
   }
   
   @Test
@@ -41,6 +58,7 @@ class ParseNumberTest {
     assertCases(
       mapOf(
         "8.680" to 8680.0,
+        "12.345" to 12345.0,
         "161.000" to 161000.0,
         "5.150.000" to 5150000.0,
       )
@@ -92,6 +110,8 @@ class ParseNumberTest {
   fun `Los numeros negativos conservan el signo en todos los tipos de formatos`() {
     assertCases(
       mapOf(
+        "-0,5" to -0.5,
+        "-0.123" to -0.123,
         "-4.5" to -4.5,
         "-11,9" to -11.9,
         "-6.220" to -6220.0,
@@ -118,9 +138,40 @@ class ParseNumberTest {
   
   @Test
   fun `El texto que no es un numero valido devuelve null`() {
-    listOf("abc", "", " ", "1.23.456", "01.234.566", "3,2,1", "1b.20","-", ".5", ",5", "1.", "1,", "--5" ).forEach { input ->
+    listOf("abc", "", " ", "1.23.456", "01.234.566", "3,2,1", "1b.20","-", ".5", ",5", "1.", "1,", "--5","+5", "1.234,", "5 %", "<0,5", "1.2.3", "1,5.5" ).forEach { input ->
       assertNull("deberia ser null con \"$input\"", parseNumber(input))
     }
+  }
+  
+  @Test
+  fun `El punto seguido de cuatro o mas digitos es decimal porque no puede ser miles`() {
+    assertCases(
+      mapOf(
+        "1.2345" to 1.2345,
+        "0.12345" to 0.12345,
+      )
+    )
+  }
+  
+  @Test
+  fun `punto y tres digitos son miles aunque el laboratorio quiera decir decimal`() {
+    assertCases(
+      mapOf(
+        "12.345" to 12345.0,
+        "1.945" to 1945.0,
+        "1.010" to 1010.0,
+      )
+    )
+  }
+  
+  @Test
+  fun `Los negativos con cero inicial conservan el signo`() {
+    assertCases(
+      mapOf(
+        "-0,5" to -0.5,
+        "-0.123" to -0.123,
+      )
+    )
   }
   
 }
