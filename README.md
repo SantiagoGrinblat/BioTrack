@@ -122,10 +122,6 @@ Los nombres de estudios y parámetros provienen de laboratorios de Argentina y L
 
 7. Ejecutá la app desde Android Studio.
 
-## Tecnologías
-
-Kotlin · Jetpack Compose · Navigation 3 · Firebase Auth · Firestore · ML Kit Text RecognitionKit
-
 ## Aviso
 
 BioTrack no interpreta resultados ni muestra rangos de referencia. Es una herramienta para guardar y mostrar tus datos; la interpretación le corresponde al médico.
